@@ -1,4 +1,3 @@
-// frist create a graph
 class Graph{
     constructor(){
         this.adjacentList={}
@@ -13,7 +12,13 @@ class Graph{
         this.adjacentList[x2].push(x1)
     }
     dfs(curr){
-        console.log(this.adjacentList[curr][1])
+        this.v.push(curr)
+        for(let i=0;i<this.adjacentList[curr].length;i++){
+           
+            if(!this.v.includes(this.adjacentList[curr][i])){
+                this.dfs(this.adjacentList[curr][i])
+            }
+        }
      
     }
     
@@ -37,6 +42,6 @@ myGraph.connectNode(3,5)
 myGraph.connectNode(4,5)
 myGraph.connectNode(5,6)
 
-myGraph.dfs(1)
+myGraph.dfs(0)
 
 console.log(myGraph)
